@@ -20,34 +20,28 @@ class ViewController: UIViewController {
 
     @IBOutlet private weak var resultLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
     @IBAction private func calculate(_ sender: Any) {
 
-        var num1 = Int(textField1.text ?? "") ?? 0
-        var num2 = Int(textField2.text ?? "") ?? 0
+        let originalNum1 = Int(textField1.text ?? "") ?? 0
+        let originalNum2 = Int(textField2.text ?? "") ?? 0
 
-        switch switch1.isOn {
-        case true:
-            num1 = -num1
-        case false:
-            break
+        let signedNum1: Int
+        if switch1.isOn {
+            signedNum1 = -originalNum1
+        } else {
+            signedNum1 = originalNum1
         }
 
-        switch switch2.isOn {
-        case true:
-            num2 = -num2
-        case false:
-            break
+        let signedNum2: Int
+        if switch2.isOn {
+            signedNum2 = -originalNum2
+        } else {
+            signedNum2 = originalNum2
         }
 
-        numberLabel1.text = String(num1)
-        numberLabel2.text = String(num2)
+        numberLabel1.text = String(signedNum1)
+        numberLabel2.text = String(signedNum2)
 
-        resultLabel.text = String(num1 + num2)
+        resultLabel.text = String(signedNum1 + signedNum2)
     }
-
 }
